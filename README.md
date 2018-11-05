@@ -5,7 +5,7 @@
 ### 1 Create the user network and a volume for the OpenClinica Database and OpenClinica Data
 
 ```
-docker network create --driver bridge oc-net
+docker network create --driver bridge trial-net
 docker volume create oc-db-data
 docker volume create oc-data
 ```
@@ -17,7 +17,7 @@ We make it save its data in the oc-db-data volume.
 Must be postgres 9.5
 
 ```
-docker run --name=oc-db -d -v oc-db-data:/var/lib/postgresql/data -e POSTGRES_PASSWORD=MASTER_PG_PASSWORD_CHANGE_ME --network oc-net postgres:9.5
+docker run --name=oc-db -d -v oc-db-data:/var/lib/postgresql/data -e POSTGRES_PASSWORD=MASTER_PG_PASSWORD_CHANGE_ME --network trial-net postgres:9.5
 ```
 
 ### 3 Create OpenClinica Database
@@ -101,10 +101,10 @@ docker build -t oc .
 
 ```
 # If running without a proxy infront opens up port 81 -> 8080
-docker run --name=oc -d -v oc-data:/usr/local/tomcat/openclinica.data -p 81:8080 --network oc-net oc
+docker run --name=oc -d -v oc-data:/usr/local/tomcat/openclinica.data -p 81:8080 --network trial-net oc
 
 # If running with a proxy you don't need to open up a port.
-docker run --name=oc -d -v oc-data:/usr/local/tomcat/openclinica.data --network oc-net oc
+docker run --name=oc -d -v oc-data:/usr/local/tomcat/openclinica.data --network trial-net oc
 
 ```
 
