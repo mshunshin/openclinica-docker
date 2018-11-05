@@ -1,4 +1,4 @@
-# OpenClinica
+# OpenClinica on Docker (Version 3.14)
 
 ## How to get OpenClinica running under docker.
 
