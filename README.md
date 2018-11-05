@@ -100,7 +100,11 @@ docker build -t oc .
 
 
 ```
+# If running without a proxy infront opens up port 81 -> 8080
 docker run --name=oc -d -v oc-data:/usr/local/tomcat/openclinica.data -p 81:8080 --network oc-net oc
+
+# If running with a proxy you don't need to open up a port.
+docker run --name=oc -d -v oc-data:/usr/local/tomcat/openclinica.data --network oc-net oc
 
 ```
 
