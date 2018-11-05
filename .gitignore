@@ -1,0 +1,7 @@
+.DS_Store
+openclinica.config/*
+!openclinica.config/README.md
+!openclinica.config/tomcat-users.xml.new
+!openclinica.config/datainfo.properties.new
+!openclinica.config/logging.properties.new
+
